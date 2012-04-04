@@ -5,7 +5,7 @@ require 'redcarpet'
 
 class MarkdownSlider
 
-  VERSION = '0.0.0'
+  VERSION = '0.0.1'
 
   USAGE =<<-EOS
   EOS
@@ -14,9 +14,34 @@ class MarkdownSlider
 
   def self.run(markdown, options = {})
 
-    raise ArgumentError, 'template not found' unless File.exist?(markdown)
+    raise ArgumentError, "specified source not found: #{markdown}" unless File.exist?(markdown)
 
     input = File::read(markdown)
+
+    # check options
+    if options.has_key?(:template)
+      if File.exist?(options[:template])
+        options[:template] = File::read(options[:template])
+      else
+        raise ArgumentError, "specified template not found: #{options[:template]}"
+      end
+    end
+
+    if options.has_key?(:style)
+      if File.exist?(options[:style])
+        options[:style] = File::read(options[:style])
+      else
+        raise ArgumentError, "specified css not found: #{options[:style]}"
+      end
+    end
+
+    if options.has_key?(:script)
+      if File.exist?(options[:script])
+        options[:script] = File::read(options[:script])
+      else
+        raise ArgumentError, "specified script not found: #{options[:script]}"
+      end
+    end
 
     MarkdownSlider.new(options).publish(input)
 
@@ -150,7 +175,7 @@ body {
   overflow: hidden;
 
   width: 900px;
-  height: 700px;
+  min-height: 700px;
 
   left: 50%;
   top: 50%;
@@ -213,7 +238,7 @@ body {
   left: 0;
   top: 0;
   width: 150px;
-  height: 700px;
+  min-height: 700px;
 
   left: 50%;
   top: 50%;

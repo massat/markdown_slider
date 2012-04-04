@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
 
+root = File.expand_path('../../', __FILE__)
+$:.unshift File.expand_path('lib', root)
+
 require 'optparse'
-require File::dirname(__FILE__) + '/../lib/markdown_slider'
+require 'markdown_slider'
 
 begin
 
-  args = ARGV.dup
-
-  options          = {}
+  args    = ARGV.dup
+  options = {}
 
   parser = OptionParser.new do |opts|
     opts.on('-h', '--help')        {|opt| options[:help]     = opt }
