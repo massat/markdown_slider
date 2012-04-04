@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require File::dirname(__FILE__) + '/../lib/markdown_slider'
+
+begin
+
+  args = ARGV.dup
+
+  options          = {}
+
+  parser = OptionParser.new do |opts|
+    opts.on('-h', '--help')        {|opt| options[:help]     = opt }
+    opts.on('--title    TITLE')    {|opt| options[:title]    = opt }
+    opts.on('--template TEMPLATE') {|opt| options[:template] = opt }
+    opts.on('--style    STYLE')    {|opt| options[:style]    = opt }
+    opts.on('--script   SCRIPT')   {|opt| options[:script]   = opt }
+  end
+
+  parser.parse!(args)
+
+  path_to_markdown = args.length > 0 ? args.pop : nil
+
+  if path_to_markdown == nil or options.has_key?(:help)
+    STDOUT.puts MarkdownSlider::USAGE
+    exit
+  end
+
+  STDOUT.puts MarkdownSlider.run(path_to_markdown, options)
+
+rescue => e
+  STDERR.puts "ERR: " + e.message
+  STDOUT.puts MarkdownSlider::USAGE
+end
