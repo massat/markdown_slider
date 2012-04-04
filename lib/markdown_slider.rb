@@ -85,7 +85,7 @@ class MarkdownSlider
     text      = '';
 
     html.lines.each do |line|
-      text += delimiter if pattern =~ line
+      text += delimiter if pattern =~ line and text.length
       text += line
     end
 
@@ -2552,6 +2552,16 @@ function addEventListeners() {
 
 function addPrettify() {
   document.body.onload = function() {
+
+    for (var i = curSlide, slide; slide = slideEls[i]; i++) {
+      var codes = slide.querySelectorAll('code');
+      for (var j = 0, code; code = codes[j]; j++) {
+        if (code.classList) {
+          code.classList.add('prettyprint');
+        }
+      }
+    }
+
     prettyPrint();
   }
 };

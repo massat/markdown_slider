@@ -2,25 +2,37 @@
 Markdown Slider
 ===============
 
-A slide-generator based on [html5slides](http://html5slides.googlecode.com/).
+Generates HTML5-slides from markdown.
 
 
 Synopsis
 --------
 
+
+### features
+
+* Generates a single html includes style and script based on [html5slides](http://html5slides.googlecode.com/).
+* Syntax highliting with [redcarpet](https://github.com/tanoku/redcarpet) and [prettify.js](http://google-code-prettify.googlecode.com)
+
 ### install
 
 It's available as a Ruby gem.
 
-```
+``` sh
 $  gem install markdown_slider
 ```
 
 The source is available on GitHub:
 
-```
+``` sh
 $ git clone git://github.com/massat/markdown_slider.git
 ```
+
+
+``` ruby
+STDOUT.puts 'awsome!'
+```
+
 
 ### Write your talk in markdown format.
 
@@ -32,13 +44,15 @@ $ git clone git://github.com/massat/markdown_slider.git
 
     It's my awsome code.
 
-    ``` ruby
-    puts 'awsome!'
+    ```
+    STDOUT.puts 'awsome!'
     ```
 
 ### And publish it!
 
-    $ md-slider example.md > index.html
+``` sh
+$ md-slider example.md > index.html
+```
 
 Usage
 -----
@@ -47,7 +61,9 @@ Usage
 
 You can publish slides with `md-slider` command.
 
-    $ md-slider [options] path/to/markdown > path/to/html
+``` sh
+$ md-slider [options] path/to/markdown > path/to/html
+```
 
 `md-slider` outputs HTML into STDOUT.
 
@@ -56,15 +72,17 @@ You can publish slides with `md-slider` command.
 
 You can use following options.
 
-    -h, --help          :show help message
+``` nocode
+-h, --help          :show help message
 
-    --title TITLE       :specifies the title of slides. (set as title of HTML)
+--title TITLE       :specifies the title of slides. (set as title of HTML)
 
-    --template TEMPLATE :specifies an ERB template.
+--template TEMPLATE :specifies an ERB template.
 
-    --style STYLE       :specifies a css file.
+--style STYLE       :specifies a css file.
 
-    --script SCRIPT     :specifies a js file
+--script SCRIPT     :specifies a js file
+```
 
 requirements
 ------------
@@ -74,15 +92,16 @@ requirements
 TODO
 ----
 
+* Scroll to top when changeing slides.
+* improve syntax highliting.
 * Write tests.
 * Fix default style.
  * Add margin between neighboring headers.
-* Scroll to top when changeing slides.
 
 License
 -------
 
-```
+``` nocode
 Copyright 2012 Masato Hirai
 
 Licensed under the Apache License, Version 2.0 (the "License");
