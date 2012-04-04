@@ -5,16 +5,15 @@ Markdown Slider
 Generates HTML5-slides from markdown.
 
 
-Synopsis
+Features
 --------
-
-
-### features
 
 * Generates a single html includes style and script based on [html5slides](http://html5slides.googlecode.com/).
 * Syntax highliting with [redcarpet](https://github.com/tanoku/redcarpet) and [prettify.js](http://google-code-prettify.googlecode.com)
 
-### install
+
+Get Started
+-----------
 
 It's available as a Ruby gem.
 
@@ -27,12 +26,6 @@ The source is available on GitHub:
 ``` sh
 $ git clone git://github.com/massat/markdown_slider.git
 ```
-
-
-``` ruby
-STDOUT.puts 'awsome!'
-```
-
 
 ### Write your talk in markdown format.
 
@@ -57,16 +50,48 @@ $ md-slider example.md > index.html
 Usage
 -----
 
-### md-slider
+#### Dividing rules
+
+`md-slider` divides html into slides with `h1` or `h2`.
+
+So, following markdown is divided into 3slides.
+
+``` md
+title
+-----
+
+subtitle
+
+agenda
+======
+
+* foo
+* bar
+
+foo
+===
+
+about foo...
+
+```
+
+And so you can use `--` (=h2) at positions you want to divide.
+
+Syntax highlite
+---------------
+
+writing...
+
+
+Publish
+-------
 
 You can publish slides with `md-slider` command.
+It outputs HTML into STDOUT.
 
 ``` sh
 $ md-slider [options] path/to/markdown > path/to/html
 ```
-
-`md-slider` outputs HTML into STDOUT.
-
 
 #### options
 

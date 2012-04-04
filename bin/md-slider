@@ -1,5 +1,24 @@
 #!/usr/bin/env ruby
 
+USAGE = <<'EOS'
+
+USAGE:
+    md-slider [options] path/to/markdown > path/to/html
+
+options:
+
+    -h, --help          :show help message
+
+    --title TITLE       :specifies the title of slides. (set as title of HTML)
+
+    --template TEMPLATE :specifies an ERB template.
+
+    --style STYLE       :specifies a css file.
+
+    --script SCRIPT     :specifies a js file
+
+EOS
+
 root = File.expand_path('../../', __FILE__)
 $:.unshift File.expand_path('lib', root)
 
@@ -24,13 +43,15 @@ begin
   path_to_markdown = args.length > 0 ? args.pop : nil
 
   if path_to_markdown == nil or options.has_key?(:help)
-    STDOUT.puts MarkdownSlider::USAGE
+    STDOUT.puts USAGE
     exit
   end
 
   STDOUT.puts MarkdownSlider.run(path_to_markdown, options)
 
 rescue => e
+
   STDERR.puts "ERR: " + e.message
-  STDOUT.puts MarkdownSlider::USAGE
+  STDOUT.puts USAGE
+
 end

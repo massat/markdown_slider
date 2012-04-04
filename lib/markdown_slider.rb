@@ -7,9 +7,6 @@ class MarkdownSlider
 
   VERSION = '0.0.1'
 
-  USAGE =<<-EOS
-  EOS
-
   attr_reader :title, :style, :script, :slides
 
   def self.run(markdown, options = {})
@@ -85,7 +82,7 @@ class MarkdownSlider
     text      = '';
 
     html.lines.each do |line|
-      text += delimiter if pattern =~ line and text.length
+      text += delimiter if pattern =~ line and text.length > 0
       text += line
     end
 
