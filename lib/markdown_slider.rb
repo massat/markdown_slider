@@ -5,7 +5,7 @@ require 'redcarpet'
 
 class MarkdownSlider
 
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
 
   attr_reader :version, :title, :style, :script, :slides
 
