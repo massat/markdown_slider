@@ -75,7 +75,7 @@ subtitle
 foo
 ---
 
-### what's who?
+### what's foo?
 
 about foo...
 

@@ -7,7 +7,7 @@ class MarkdownSlider
 
   VERSION = '0.0.2'
 
-  attr_reader :title, :style, :script, :slides
+  attr_reader :version, :title, :style, :script, :slides
 
   def self.run(markdown, options = {})
 
@@ -46,6 +46,8 @@ class MarkdownSlider
 
 
   def initialize(options = {})
+
+    @version  = MarkdownSlider::VERSION
 
     @title    = options[:title]    || 'title'
     @template = options[:template] || MarkdownSlider::TEMPLATE
@@ -101,6 +103,7 @@ class MarkdownSlider
 <head>
 <title><%= title %></title>
 <meta charset='utf-8'>
+<meta name="generator" content="markdown_slider <%= version %>">
 <script type="text/javascript"'>
 <%= script %>
 </script>
