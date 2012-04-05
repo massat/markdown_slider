@@ -5,7 +5,7 @@ require 'redcarpet'
 
 class MarkdownSlider
 
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
 
   attr_reader :title, :style, :script, :slides
 
@@ -78,7 +78,7 @@ class MarkdownSlider
   def split(html)
 
     delimiter = '<!--%% DELIMITER %%-->'
-    pattern   = /<h1>.*?<\/h1>|<h2>.*?<\/h2>/
+    pattern   = /<h1>.*?<\/h1>|<h2>.*?<\/h2>|<h3>.*?<\/h3>/
     text      = '';
 
     html.lines.each do |line|
@@ -123,7 +123,14 @@ class MarkdownSlider
   # CSS
   STYLE =<<-'EOS'
 /*
-  Based on Google HTML5 slides template
+  Google HTML5 slides template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
   URL: http://code.google.com/p/html5slides/
 */
 
@@ -219,6 +226,7 @@ body {
 
 .slides.template-io2011 > article:not(.nobackground):not(.biglogo) {
   background-size: 100%, 225px;
+
   background-color: white;
 }
 .slides.layout-widescreen > article:not(.nobackground):not(.biglogo),
@@ -271,6 +279,7 @@ body {
 
 .slides.template-io2011 article.biglogo {
   background: white;
+
   background-size: 600px;
 }
 
@@ -432,6 +441,9 @@ h1 {
 h2 {
   font-size: 45px;
   line-height: 45px;
+
+  position: absolute;
+  bottom: 150px;
 
   padding: 0;
   margin: 0;

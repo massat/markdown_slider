@@ -5,8 +5,7 @@ Markdown Slider
 Generates HTML5-slides from markdown.
 
 
-Features
---------
+### Features
 
 * Generates a single html includes style and script based on [html5slides](http://html5slides.googlecode.com/).
 * Syntax highliting with [redcarpet](https://github.com/tanoku/redcarpet) and [prettify.js](http://google-code-prettify.googlecode.com)
@@ -14,6 +13,8 @@ Features
 
 Get Started
 -----------
+
+### install
 
 It's available as a Ruby gem.
 
@@ -27,13 +28,17 @@ The source is available on GitHub:
 $ git clone git://github.com/massat/markdown_slider.git
 ```
 
-### Write your talk in markdown format.
+### Publish
+
+#### Write your talk in markdown format.
 
     TITLE
     =====
 
-    section1
-    --------
+    section title
+    -------------
+
+    ### slide title
 
     It's my awsome code.
 
@@ -41,7 +46,7 @@ $ git clone git://github.com/massat/markdown_slider.git
     STDOUT.puts 'awsome!'
     ```
 
-### And publish it!
+#### And publish it!
 
 ``` sh
 $ md-slider example.md > index.html
@@ -50,41 +55,38 @@ $ md-slider example.md > index.html
 Usage
 -----
 
-#### Dividing rules
+### Dividing rules
 
-`md-slider` divides html into slides with `h1` or `h2`.
+`md-slider` divides html into slides with `h1`, `h2` and `h3`.
 
-So, following markdown is divided into 3slides.
+Following markdown is divided into 4slides.
 
 ``` md
 title
------
+=====
 
 subtitle
 
-agenda
-======
+### agenda
 
 * foo
 * bar
 
 foo
-===
+---
+
+### what's who?
 
 about foo...
 
 ```
 
-And so you can use `--` (=h2) at positions you want to divide.
-
-Syntax highlite
----------------
+### Syntax highliting
 
 writing...
 
 
-Publish
--------
+### md-slider
 
 You can publish slides with `md-slider` command.
 It outputs HTML into STDOUT.
@@ -109,22 +111,17 @@ You can use following options.
 --script SCRIPT     :specifies a js file
 ```
 
-requirements
-------------
+### requirements
 
 * [redcarpet](https://github.com/tanoku/redcarpet)
 
-TODO
-----
+### TODO
 
-* Scroll to top when changeing slides.
+* improve navigation.
 * improve syntax highliting.
 * Write tests.
-* Fix default style.
- * Add margin between neighboring headers.
 
-License
--------
+### License
 
 ``` nocode
 Copyright 2012 Masato Hirai
